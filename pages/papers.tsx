@@ -3,6 +3,11 @@ import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event'
 import { useEffect, useState } from 'react'
 import Paper from '../src/Paper.js'
 
+type Data = {
+  title: string,
+  
+}
+
 const Papers: NextPage = () => {
 
   const API_URL = 'http://localhost:3000/api/papers'
@@ -25,6 +30,13 @@ const Papers: NextPage = () => {
      
   }
 
+  interface paper {
+    title: string,
+    abstract: string,
+    doi: string,
+    preview: string
+  }
+
   useEffect(() =>{
     setLoading(true)
     fetchPapers()
@@ -37,7 +49,7 @@ const Papers: NextPage = () => {
     <div>
       <h1>Papers</h1>
       <div className="paperContainer">
-        {papers.map((p,id) =>(
+        {papers.map((p : paper,id) =>(
           <Paper key={id} title={p.title} abstract = {p.abstract} doi = {p.doi} preview = {p.preview}/>
         ))}
       </div>

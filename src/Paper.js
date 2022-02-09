@@ -7,14 +7,9 @@ const Paper = ({title, abstract, doi, preview}) => {
 
   const [show, setShow] = useState(false)
 
-
-
   const handleShow = () => setShow(true)
   const handleClose = () => setShow(false)
 
-
-
- 
 
   return(
     <div>
@@ -36,8 +31,9 @@ const Paper = ({title, abstract, doi, preview}) => {
             </Link>
           </div>
           <div>
-            
-           
+            <iframe 
+              src={preview.replace('watch?v=', 'embed/')}
+            />
           </div>
           
         </Modal.Body>
